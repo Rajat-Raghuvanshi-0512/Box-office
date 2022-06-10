@@ -3,10 +3,11 @@ import Search from '../components/Search'
 import ShowGrid from '../components/ShowGrid'
 import { apiGet } from '../utils/config'
 import { reducer } from '../utils/config'
+import { useLastQuery } from '../utils/custom-hooks'
 
 const Home = () => {
     const [selection, setSelection] = useState("shows")
-    const [query, setQuery] = useState("")
+    const [query, setQuery] = useLastQuery()
     const [state, dispatch] = useReducer(reducer, {
         results: [],
         isLoading: false,
@@ -25,15 +26,8 @@ const Home = () => {
         }
     }
     useEffect(() => {
-        const queryHistory = JSON.parse(localStorage.getItem("searchInput"))
-        if (queryHistory) {
-            setQuery(queryHistory)
-        }
-    }, [])
-    useEffect(() => {
-        localStorage.setItem("searchInput", JSON.stringify(query))
         localStorage.setItem("results", JSON.stringify(results))
-    }, [query, results])
+    }, [results])
 
     return (
         <>
