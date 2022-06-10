@@ -60,7 +60,10 @@ export const useShow = (state) => {
                     setIsLoading(false)
                     console.log(res);
                 })
-                .catch(err => setError(err.message))
+                .catch(err => {
+                    setError(err.message)
+                    setIsLoading(false)
+                })
         }
     }, [state, setError, setIsLoading, setResults])
 

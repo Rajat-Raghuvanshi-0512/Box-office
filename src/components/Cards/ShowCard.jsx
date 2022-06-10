@@ -4,19 +4,13 @@ import { useShows } from '../../utils/custom-hooks'
 
 const Card = ({ name, summary, image, rating, id }) => {
     const [show, dispatch] = useShows();
-    const [starred, setStarred] = useState(false)
     const saveShow = () => {
         if (show.includes(id)) {
             dispatch({ type: "REMOVE", payload: id })
-            setStarred(false)
         } else {
             dispatch({ type: "ADD", payload: id })
-            setStarred(true)
         }
     }
-    useEffect(() => {
-        show.includes(id) && setStarred(true)
-    }, [id, show])
     return (
         <div className="p-4 md:w-1/3">
             <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden bg-white bg-opacity-80">
@@ -26,7 +20,7 @@ const Card = ({ name, summary, image, rating, id }) => {
                     <div className='flex justify-between mb-3'>
                         <h1 className="title-font text-lg font-medium text-gray-900">{name}</h1>
                         <button onClick={saveShow}>
-                            <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className={`w-6 h-6 drop-shadow-2xl ${starred ? "text-red-500" : "text-gray-300"}`} viewBox="0 0 24 24">
+                            <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className={`w-6 h-6 drop-shadow-2xl ${show.includes(id) ? "text-red-500" : "text-gray-300"}`} viewBox="0 0 24 24">
                                 <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
                             </svg>
                         </button>
