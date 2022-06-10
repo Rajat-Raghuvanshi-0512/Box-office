@@ -14,7 +14,6 @@ const ViewShow = () => {
         })
         setIsLoading(false)
     }, [id])
-    console.log(show);
     if (isLoading) {
         return <Loader />
     }

@@ -5,9 +5,11 @@ import Home from "./pages/Home";
 import Starred from "./pages/Starred";
 import ViewActor from "./pages/ViewActor";
 import ViewShow from "./pages/ViewShow";
+import Bg from "./components/bg/bg";
 const App = () => {
   return (
     <>
+      <Bg />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ShowGrid from '../components/ShowGrid'
-import { apiGet } from '../utils/config'
 import { useShow, useShows } from '../utils/custom-hooks'
 
 const Starred = () => {

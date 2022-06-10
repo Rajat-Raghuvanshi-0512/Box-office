@@ -9,7 +9,6 @@ const ViewActor = () => {
     useEffect(() => {
         apiGet(`https://api.tvmaze.com/people/${id}`).then(data => {
             setActor(data)
-            console.log(data);
         })
     }, [id])
 
